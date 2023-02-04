@@ -13,6 +13,11 @@ resource "azurerm_subnet" "subnet" {
 
 }
 
+resource "random_string" "random" {
+  length = 6
+  special = false
+}
+
 resource "azurerm_network_security_group" "nsg" {
   name                = "${(var.name-prefix)}-nsg"
   location            = var.location
@@ -40,7 +45,7 @@ resource "azurerm_public_ip" "p-ip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
-  domain_name_label = "${var.name-prefix}-2142134-dns.com"
+  domain_name_label = "${var.name-prefix}${random_string.random.result}"
 }
 
 resource "azurerm_lb" "lb-vmss" {
