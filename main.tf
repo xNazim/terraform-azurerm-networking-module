@@ -45,7 +45,7 @@ resource "azurerm_public_ip" "p-ip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
-  domain_name_label = "${var.name-prefix}${random_string.random.result}"
+  domain_name_label = "${lower(var.name-prefix)}-${lower(random_string.random.result)}"
 }
 
 resource "azurerm_lb" "lb-vmss" {
