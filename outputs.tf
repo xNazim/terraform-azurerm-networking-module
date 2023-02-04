@@ -22,5 +22,5 @@ output "public_ip" {
 }
 
 output "fqdn" {
-  value = "${azurerm_lb.lb-vmss.name}.${var.location}.cloudapp.azure.com"
+  value = azurerm_public_ip.p-ip.domain_name_label
 }

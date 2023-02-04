@@ -40,6 +40,7 @@ resource "azurerm_public_ip" "p-ip" {
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
+  domain_name_label = "${var.name-prefix}-2142134-dns.com"
 }
 
 resource "azurerm_lb" "lb-vmss" {
